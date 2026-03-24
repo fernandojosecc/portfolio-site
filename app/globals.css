@@ -1,17 +1,37 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Color palette */
+  --cream: #F8F5EE;
+  --cream-dark: #EDE9DF;
+  --ink: #1A1A16;
+  --ink-mid: #4A4A42;
+  --ink-light: #9A9A8E;
+  --yellow: #F5C842;
+  --yellow-dark: #D4A800;
+  --yellow-pale: #FDF6D8;
+  --yellow-mid: #F9E08A;
+
+  /* Terminal colors */
+  --terminal-red: #ff5f57;
+  --terminal-yellow: #febc2e;
+  --terminal-green: #28c840;
+  --terminal-blue: #9FC5FF;
+  --terminal-green-soft: #A8E6C8;
+  --terminal-off-white: #E8E4DA;
+
+  /* Fonts */
+  --font-playfair: 'Playfair Display', Georgia, serif;
+  --font-dm-mono: 'DM Mono', monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 html {
   height: 100%;
+  scroll-behavior: smooth;
 }
 
 html,
@@ -24,17 +44,14 @@ body {
   min-height: 100%;
   display: flex;
   flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--ink);
+  background: var(--cream);
+  font-family: var(--font-dm-mono), monospace;
+  font-size: 14px;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+  cursor: none;
 }
 
 a {
@@ -42,8 +59,179 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-playfair), Georgia, serif;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+/* Status dot pulse animation */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
   }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+.status-dot {
+  position: relative;
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: var(--yellow);
+  border-radius: 50%;
+}
+
+.status-dot::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--yellow);
+  border-radius: 50%;
+  animation: pulse-ring 2s ease-out infinite;
+}
+
+/* Blinking cursor animation */
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+.blinking-cursor {
+  display: inline-block;
+  width: 10px;
+  height: 18px;
+  background-color: var(--yellow);
+  animation: blink 1s step-end infinite;
+  margin-left: 2px;
+}
+
+/* Scroll reveal animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hover underline animation for cards */
+.hover-underline {
+  position: relative;
+}
+
+.hover-underline::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--yellow);
+  transition: width 0.3s ease-out;
+}
+
+.hover-underline:hover::after {
+  width: 100%;
+}
+
+/* Card hover styles */
+.card-hover {
+  transition: background-color 0.15s ease-out;
+}
+
+.card-hover:hover {
+  background-color: var(--yellow-pale);
+}
+
+/* Scan lines for terminal */
+.scan-lines {
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.02) 0px,
+    rgba(255, 255, 255, 0.02) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  body {
+    cursor: auto;
+  }
+}
+
+/* Glassmorphism card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 12px;
+}
+
+/* Section borders */
+.section-border {
+  border-top: 1.5px solid var(--ink);
+}
+
+/* Pills */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border: 1px solid var(--ink);
+  font-size: 12px;
+  transition: all 0.15s ease-out;
+}
+
+.pill:hover {
+  background-color: var(--yellow);
+  color: var(--ink);
+}
+
+/* Badge styles */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-radius: 4px;
+}
+
+.badge-glass {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.badge-yellow {
+  background: var(--yellow-pale);
+  color: var(--ink);
 }
