@@ -18,7 +18,7 @@ const terminalLines = [
   { type: "command", content: "ls projects/" },
   { type: "output", content: "bilingual-chatbot/   rag-assistant/   ops-agent/", isFolders: true },
   { type: "empty", content: "" },
-  { type: "comment", content: "# Currently building in public..." },
+  { type: "comment", content: "# Ready for new challenges..." },
 ];
 
 export default function Terminal() {

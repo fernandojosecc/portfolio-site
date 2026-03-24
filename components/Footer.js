@@ -51,7 +51,7 @@ export default function Footer() {
             fontFamily: "var(--font-playfair)",
           }}
         >
-          building in public
+          commit to change
         </span>
       </div>
     </footer>
