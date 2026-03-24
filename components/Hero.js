@@ -24,6 +24,7 @@ export default function Hero() {
         gridTemplateColumns: "1fr 1fr",
         borderBottom: "1.5px solid var(--ink)",
       }}
+      className="responsive-grid"
     >
       {/* Left column */}
       <div
@@ -34,6 +35,7 @@ export default function Hero() {
           justifyContent: "space-between",
           borderRight: "1.5px solid var(--ink)",
         }}
+        className="responsive-padding"
       >
         <div>
           {/* Eyebrow */}
@@ -66,7 +68,7 @@ export default function Hero() {
 
           {/* Headline */}
           <h1 style={{ marginBottom: "24px" }}>
-            <div style={{ fontSize: "72px", fontWeight: 700, lineHeight: 1.05 }}>
+            <div style={{ fontSize: "72px", fontWeight: 700, lineHeight: 1.05 }} className="responsive-headline">
               Building
             </div>
             <div
@@ -77,10 +79,11 @@ export default function Hero() {
                 lineHeight: 1.05,
                 color: "var(--ink-mid)",
               }}
+              className="responsive-headline"
             >
               intelligent
             </div>
-            <div style={{ fontSize: "72px", fontWeight: 700, lineHeight: 1.05 }}>
+            <div style={{ fontSize: "72px", fontWeight: 700, lineHeight: 1.05 }} className="responsive-headline">
               <span
                 style={{
                   position: "relative",

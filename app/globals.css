@@ -178,10 +178,60 @@ h1, h2, h3, h4, h5, h6 {
   );
 }
 
-/* Responsive adjustments */
+/* Responsive utilities */
 @media (max-width: 768px) {
   body {
     cursor: auto;
+  }
+
+  .responsive-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .responsive-padding {
+    padding: 32px 24px !important;
+  }
+
+  .responsive-headline {
+    font-size: 48px !important;
+  }
+
+  .responsive-section-title {
+    font-size: 36px !important;
+  }
+
+  .hide-mobile {
+    display: none !important;
+  }
+
+  .full-width-mobile {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .stack-mobile {
+    flex-direction: column !important;
+  }
+
+  .text-center-mobile {
+    text-align: center !important;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
   }
 }
 
