@@ -26,7 +26,14 @@ export default function Home() {
 
     // Observe all elements with reveal class
     const revealElements = document.querySelectorAll(".reveal");
-    revealElements.forEach((el) => observer.observe(el));
+    revealElements.forEach((el) => {
+      observer.observe(el);
+      // Check if element is already in viewport
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        el.classList.add("visible");
+      }
+    });
 
     return () => observer.disconnect();
   }, []);
