@@ -6,10 +6,15 @@ export default function CustomCursor() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(true);
 
   useEffect(() => {
-    // Only show custom cursor on desktop
-    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    // Check mobile once on mount
+    const checkMobile = () => {
+      setIsMobile(window.matchMedia("(max-width: 768px)").matches);
+    };
+    checkMobile();
+
     if (isMobile) return;
 
     const updatePosition = (e) => {
@@ -47,13 +52,10 @@ export default function CustomCursor() {
       document.removeEventListener("mouseleave", handleMouseLeave);
       observer.disconnect();
     };
-  }, [isVisible]);
+  }, [isVisible, isMobile]);
 
   // Don't render on mobile
-  if (typeof window !== "undefined") {
-    const isMobile = window.matchMedia("(max-width: 768px)").matches;
-    if (isMobile) return null;
-  }
+  if (isMobile) return null;
 
   return (
     <div
