@@ -2,7 +2,7 @@
 // Add this to your layout.js to enable GA4 tracking
 
 import Script from "next/script";
-import { GA_MEASUREMENT_ID, isGAEnabled } from "./gtag";
+import { GA_MEASUREMENT_ID, isGAEnabled } from "../lib/gtag";
 
 export default function GoogleAnalytics() {
   if (!isGAEnabled) return null;
