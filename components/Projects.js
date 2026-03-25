@@ -11,7 +11,7 @@ const projects = [
     description:
       "Conversational AI that responds in both English and Spanish. Built with Python, Flask, and the OpenAI API. Fully deployed and accessible to anyone.",
     stack: ["Python", "Flask", "OpenAI", "Railway"],
-    link: "#",
+    link: "https://web-production-a3065.up.railway.app/",
     featured: true,
   },
   {
