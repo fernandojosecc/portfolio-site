@@ -22,7 +22,7 @@ const projects = [
     description:
       "Upload any PDF and ask questions about it in English and Spanish. Powered by LangChain, Claude API, and Pinecone vector search.",
     stack: ["Python", "FastAPI", "LangChain", "Claude API", "Pinecone", "Next.js"],
-    link: "https://rag-assistant.vercel.app",
+    link: "https://rag-assistant-ui.vercel.app/",
     github: "https://github.com/fernandojosecc/rag-assistant-api",
     featured: false,
   },
