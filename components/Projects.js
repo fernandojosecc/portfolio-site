@@ -18,11 +18,12 @@ const projects = [
     id: 2,
     number: "02",
     title: "RAG Document Assistant",
-    status: "Coming Soon",
+    status: "LIVE",
     description:
-      "Upload any PDF and chat with it. Powered by LangChain and vector search. Grounded answers from your own documents.",
-    stack: ["LangChain", "Pinecone", "FastAPI"],
-    link: "#",
+      "Upload any PDF and ask questions about it in English and Spanish. Powered by LangChain, Claude API, and Pinecone vector search.",
+    stack: ["Python", "FastAPI", "LangChain", "Claude API", "Pinecone", "Next.js"],
+    link: "https://rag-assistant.vercel.app",
+    github: "https://github.com/fernandojosecc/rag-assistant-api",
     featured: false,
   },
   {
