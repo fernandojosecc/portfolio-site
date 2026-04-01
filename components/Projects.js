@@ -12,6 +12,7 @@ const projects = [
       "Conversational AI that responds in both English and Spanish. Built with Python, Flask, and the OpenAI API. Fully deployed and accessible to anyone.",
     stack: ["Python", "Flask", "OpenAI", "Railway"],
     link: "https://web-production-a3065.up.railway.app/",
+    github: "https://github.com/fernandojosecc/bilingual-chatbot",
     featured: true,
   },
   {
@@ -35,6 +36,7 @@ const projects = [
       "Autonomous agent that solves real operations problems using tool-use. Built for reliability and real-world deployment.",
     stack: ["Agents", "AWS", "FastAPI"],
     link: "#",
+    github: null,
     featured: false,
   },
 ];
@@ -196,19 +198,37 @@ export default function Projects() {
             </div>
           </div>
 
-          {/* Link */}
-          <Link
-            href={projects[0].link}
-            style={{
-              fontSize: "13px",
-              color: "var(--cream)",
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "4px",
-            }}
-          >
-            View project ↗
-          </Link>
+          {/* Links */}
+          <div style={{ display: "flex", gap: "16px", alignItems: "center" }}>
+            <Link
+              href={projects[0].link}
+              style={{
+                fontSize: "13px",
+                color: "var(--cream)",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "4px",
+              }}
+            >
+              View project ↗
+            </Link>
+            <Link
+              href={projects[0].github}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                fontSize: "13px",
+                color: "var(--cream)",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "4px",
+                border: "1px solid rgba(255,255,255,0.3)",
+                padding: "4px 8px",
+              }}
+            >
+              GitHub →
+            </Link>
+          </div>
         </div>
 
         {/* Right half - Code snippet */}
@@ -323,23 +343,66 @@ export default function Projects() {
               </div>
             </div>
 
-            {/* Link */}
-            <Link
-              href={project.link}
-              style={{
-                fontSize: "13px",
-                color: "var(--ink-mid)",
-                marginTop: "24px",
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "4px",
-                transition: "color 0.15s ease-out",
-              }}
-              onMouseEnter={(e) => (e.target.style.color = "var(--ink)")}
-              onMouseLeave={(e) => (e.target.style.color = "var(--ink-mid)")}
-            >
-              Follow progress →
-            </Link>
+            {/* Links */}
+            <div style={{ display: "flex", gap: "16px", alignItems: "center", marginTop: "24px" }}>
+              <Link
+                href={project.link}
+                style={{
+                  fontSize: "13px",
+                  color: "var(--ink-mid)",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "4px",
+                  transition: "color 0.15s ease-out",
+                }}
+                onMouseEnter={(e) => (e.target.style.color = "var(--ink)")}
+                onMouseLeave={(e) => (e.target.style.color = "var(--ink-mid)")}
+              >
+                Follow progress →
+              </Link>
+              {project.github ? (
+                <Link
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    fontSize: "13px",
+                    color: "var(--ink-mid)",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "4px",
+                    border: "1px solid var(--ink-light)",
+                    padding: "4px 8px",
+                    transition: "color 0.15s ease-out, border-color 0.15s ease-out",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.color = "var(--ink)";
+                    e.target.style.borderColor = "var(--ink)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.color = "var(--ink-mid)";
+                    e.target.style.borderColor = "var(--ink-light)";
+                  }}
+                >
+                  GitHub →
+                </Link>
+              ) : (
+                <span
+                  style={{
+                    fontSize: "13px",
+                    color: "var(--ink-light)",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "4px",
+                    border: "1px solid var(--ink-light)",
+                    padding: "4px 8px",
+                    cursor: "not-allowed",
+                  }}
+                >
+                  Coming soon
+                </span>
+              )}
+            </div>
           </div>
         ))}
       </div>
