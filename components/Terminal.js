@@ -16,7 +16,7 @@ const terminalLines = [
   { type: "json", content: '}' },
   { type: "empty", content: "" },
   { type: "command", content: "ls projects/" },
-  { type: "output", content: "bilingual-chatbot/   rag-assistant/   ops-agent/", isFolders: true },
+  { type: "output", content: "bilingual-chatbot/   rag-assistant/   research-agent/", isFolders: true },
   { type: "empty", content: "" },
   { type: "comment", content: "# Ready for new challenges..." },
 ];
