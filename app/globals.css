@@ -309,7 +309,7 @@ h1, h2, h3, h4, h5, h6 {
   left: -4px;
   right: -4px;
   bottom: 0;
-  top: 50%;
+  top: 15%;
   background: var(--yellow);
   z-index: -1;
   transform: rotate(-0.5deg);
