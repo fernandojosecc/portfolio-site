@@ -87,26 +87,11 @@ export default function Hero() {
               <span
                 style={{
                   position: "relative",
-                  display: "inline-block",
+                  display: "inline",
                 }}
+                className="highlight-text"
               >
-                <span
-                  style={{
-                    position: "relative",
-                    zIndex: 1,
-                  }}
-                >
-                  systems.
-                </span>
-                <span
-                  style={{
-                    position: "absolute",
-                    inset: "-2px -12px -8px -8px",
-                    backgroundColor: "var(--yellow)",
-                    transform: "rotate(-0.5deg)",
-                    zIndex: 0,
-                  }}
-                />
+                systems.
               </span>
             </div>
           </h1>
