@@ -30,13 +30,13 @@ const projects = [
   {
     id: 3,
     number: "03",
-    title: "AI Operations Agent",
-    status: "Coming Soon",
+    title: "AI Research Agent",
+    status: "LIVE",
     description:
-      "Autonomous agent that solves real operations problems using tool-use. Built for reliability and real-world deployment.",
-    stack: ["Agents", "AWS", "FastAPI"],
-    link: "#",
-    github: null,
+      "Autonomous AI agent that researches any topic and generates structured reports with sources. Uses LangChain tool use, Tavily web search, and Claude to reason, search, and write independently.",
+    stack: ["Python", "FastAPI", "LangChain", "Claude API", "Tavily", "Next.js"],
+    link: "https://research-agent-ui-pi.vercel.app",
+    github: "https://github.com/fernandojosecc/research-agent-api",
     featured: false,
   },
 ];
