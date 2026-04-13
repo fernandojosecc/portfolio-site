@@ -101,7 +101,7 @@ export default function Hero() {
                 <span
                   style={{
                     position: "absolute",
-                    inset: "-4px -12px -8px -8px",
+                    inset: "-2px -12px -8px -8px",
                     backgroundColor: "var(--yellow)",
                     transform: "rotate(-0.5deg)",
                     zIndex: 0,
