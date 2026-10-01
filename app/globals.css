@@ -314,3 +314,229 @@ h1, h2, h3, h4, h5, h6 {
   z-index: -1;
   transform: rotate(-0.5deg);
 }
+
+/* Projects section */
+.proj-filter {
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-family: var(--font-dm-mono), monospace;
+  font-size: 12px;
+  color: var(--ink-mid);
+  cursor: none;
+  transition: background-color 0.15s ease-out, color 0.15s ease-out;
+}
+
+.proj-filter:hover {
+  color: var(--ink);
+  border-color: var(--ink-light);
+}
+
+.proj-filter.is-active {
+  background: var(--ink);
+  color: var(--cream);
+  border-color: var(--ink);
+}
+
+.proj-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+  margin-top: 32px;
+}
+
+.proj-list {
+  list-style: none;
+}
+
+.proj-row {
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  gap: 16px;
+  align-items: baseline;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--ink-light);
+  position: relative;
+  outline: none;
+}
+
+.proj-row::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--yellow);
+  transition: width 0.3s ease-out;
+}
+
+.is-active .proj-row::after,
+.proj-row:focus-visible::after {
+  width: 100%;
+}
+
+.proj-num {
+  font-size: 12px;
+  color: var(--ink-light);
+  transition: color 0.15s ease-out;
+}
+
+.is-active .proj-num {
+  color: var(--ink);
+}
+
+.proj-title {
+  font-size: 36px;
+  font-style: italic;
+  font-weight: 600;
+  margin-bottom: 8px;
+  transition: transform 0.2s ease-out;
+}
+
+.is-active .proj-title {
+  transform: translateX(6px);
+}
+
+.proj-desc {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--ink-mid);
+  max-width: 420px;
+}
+
+.proj-links {
+  display: flex;
+  gap: 16px;
+  margin-top: 12px;
+  font-size: 12px;
+}
+
+.proj-links a {
+  color: var(--ink-mid);
+  border-bottom: 1px solid var(--ink-light);
+  transition: color 0.15s ease-out, border-color 0.15s ease-out;
+}
+
+.proj-links a:hover {
+  color: var(--ink);
+  border-color: var(--yellow);
+}
+
+.proj-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--ink-light);
+}
+
+.proj-status {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.proj-status-building {
+  background: var(--yellow-pale);
+  color: var(--ink);
+  border: 1px solid var(--yellow);
+}
+
+.proj-status-live {
+  background: var(--ink);
+  color: var(--cream);
+  border: 1px solid var(--ink);
+}
+
+.proj-status-shipped {
+  color: var(--ink-mid);
+  border: 1px solid var(--ink-light);
+}
+
+.proj-preview-wrap {
+  position: sticky;
+  top: 96px;
+}
+
+.proj-preview {
+  aspect-ratio: 4 / 3;
+  border: 1.5px solid var(--ink);
+  overflow: hidden;
+}
+
+.proj-preview-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: var(--ink-light);
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--cream-dark) 0px,
+    var(--cream-dark) 12px,
+    var(--cream) 12px,
+    var(--cream) 24px
+  );
+}
+
+.proj-preview-empty span {
+  background: var(--cream);
+  padding: 4px 10px;
+}
+
+.proj-preview-terminal {
+  background-color: var(--ink);
+  color: var(--terminal-off-white);
+  font-family: var(--font-dm-mono), monospace;
+  font-size: 13px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  white-space: pre;
+}
+
+@media (max-width: 768px) {
+  .proj-layout {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .proj-row {
+    grid-template-columns: 32px 1fr;
+  }
+
+  .proj-links {
+  display: flex;
+  gap: 16px;
+  margin-top: 12px;
+  font-size: 12px;
+}
+
+.proj-links a {
+  color: var(--ink-mid);
+  border-bottom: 1px solid var(--ink-light);
+  transition: color 0.15s ease-out, border-color 0.15s ease-out;
+}
+
+.proj-links a:hover {
+  color: var(--ink);
+  border-color: var(--yellow);
+}
+
+.proj-meta {
+    grid-column: 2;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .proj-title {
+    font-size: 28px;
+  }
+}
