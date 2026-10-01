@@ -44,7 +44,7 @@ export default function Contact() {
           marginBottom: "48px",
         }}
       >
-        02 — Get in Touch
+        03 — Get in Touch
       </div>
 
       {/* Two columns */}

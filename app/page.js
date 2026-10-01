@@ -5,6 +5,7 @@ import CustomCursor from "@/components/CustomCursor";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Projects from "@/components/Projects";
+import SideProjects from "@/components/SideProjects";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
@@ -45,6 +46,7 @@ export default function Home() {
       <main style={{ flex: 1 }}>
         <Hero />
         <Projects />
+        <SideProjects />
         <Contact />
       </main>
       <Footer />
