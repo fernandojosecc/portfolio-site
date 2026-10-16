@@ -69,7 +69,7 @@ const projects = [
     description:
       "A handmade cyberdeck built inside a BMO-inspired case — a portable computer with a personality.",
     stack: [],
-    image: null,
+    image: "/projects/bmo-cyberdeck.webp",
     link: null,
     github: null,
   },
