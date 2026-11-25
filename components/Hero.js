@@ -1,193 +1,70 @@
 "use client";
 
+import Image from "next/image";
 import Terminal from "./Terminal";
 
-const stackItems = [
-  "Python",
-  "OpenAI API",
-  "Flask",
-  "LangChain",
-  "FastAPI",
-  "AWS",
-  "Pinecone",
-  "Agents",
-  "Prompt Engineering",
+const stack = [
+  "React Native · Expo · TypeScript",
+  "Python · FastAPI · Flask",
+  "OpenAI API · LangChain · Pinecone",
+  "Agents · Prompt Engineering · AWS",
 ];
 
 export default function Hero() {
   return (
-    <section
-      id="about"
-      style={{
-        minHeight: "calc(100vh - 60px)",
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr",
-        borderBottom: "1.5px solid var(--ink)",
-      }}
-      className="responsive-grid"
-    >
-      {/* Left column */}
-      <div
-        style={{
-          padding: "64px 48px",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-between",
-          borderRight: "1.5px solid var(--ink)",
-        }}
-        className="responsive-padding"
-      >
+    <section id="about" className="hero responsive-grid">
+      <div className="hero-left responsive-padding">
         <div>
-          {/* Eyebrow */}
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "12px",
-              marginBottom: "32px",
-            }}
-          >
-            <span
-              style={{
-                width: "24px",
-                height: "2px",
-                backgroundColor: "var(--yellow)",
-              }}
-            />
-            <span
-              style={{
-                fontSize: "12px",
-                textTransform: "uppercase",
-                letterSpacing: "1px",
-                color: "var(--ink-mid)",
-              }}
-            >
-              AI Tools Specialist · Bilingual EN/ES
+          <div className="rise" style={{ "--d": 0 }}>
+            <span className="hero-photo">
+              <Image src="/fernando.jpg" alt="Fernando Contreras" width={72} height={72} priority />
             </span>
           </div>
 
-          {/* Headline */}
-          <h1 style={{ marginBottom: "24px" }}>
-            <div style={{ fontSize: "72px", fontWeight: 700, lineHeight: 1.05 }} className="responsive-headline">
-              Building
-            </div>
-            <div
-              style={{
-                fontSize: "72px",
-                fontWeight: 600,
-                fontStyle: "italic",
-                lineHeight: 1.05,
-                color: "var(--ink-mid)",
-              }}
-              className="responsive-headline"
-            >
-              intelligent
-            </div>
-            <div style={{ fontSize: "72px", fontWeight: 700, lineHeight: 1.05 }} className="responsive-headline">
-              <span
-                style={{
-                  position: "relative",
-                  display: "inline",
-                }}
-                className="highlight-text"
-              >
-                systems.
-              </span>
-            </div>
+          <div className="rise hero-eyebrow" style={{ "--d": 1 }}>
+            <span style={{ width: 28, height: 1, backgroundColor: "var(--gold)" }} />
+            <span className="eyebrow" style={{ color: "var(--ink-mid)" }}>
+              Software Developer · AI Tools · Bilingual EN/ES
+            </span>
+          </div>
+
+          <h1 className="hero-title">
+            <span className="rise" style={{ "--d": 2 }}>Building</span>
+            <span className="rise hero-title-italic" style={{ "--d": 3 }}>intelligent</span>
+            <span className="rise" style={{ "--d": 4 }}>
+              <span className="highlight-text">systems.</span>
+            </span>
           </h1>
 
-          {/* Bio */}
-          <p
-            style={{
-              fontSize: "14px",
-              lineHeight: 1.7,
-              color: "var(--ink-mid)",
-              maxWidth: "420px",
-              marginBottom: "32px",
-            }}
-          >
-            I'm a software development student with a focus on AI engineering. I
-            build real tools — chatbots, RAG pipelines, and autonomous agents —
-            with a bias toward shipping things that actually work. Bilingual
-            EN/ES, based in California.
+          <p className="rise hero-bio" style={{ "--d": 5 }}>
+            I&apos;m a software development student who ships real things: iPhone
+            and iPad apps on the App Store, plus AI tools like chatbots, RAG
+            pipelines, and autonomous agents. From a pixel-pet focus timer to a
+            talking BMO, I build with a bias toward what actually works.
+            Bilingual EN/ES, based in California.
           </p>
 
-          {/* CTAs */}
-          <div style={{ display: "flex", gap: "16px", alignItems: "center" }}>
-            <a
-              href="#projects"
-              style={{
-                backgroundColor: "var(--ink)",
-                color: "var(--cream)",
-                padding: "12px 24px",
-                fontSize: "13px",
-                fontWeight: 500,
-                transition: "all 0.15s ease-out",
-              }}
-              onMouseEnter={(e) => {
-                e.target.style.backgroundColor = "var(--yellow)";
-                e.target.style.color = "var(--ink)";
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.backgroundColor = "var(--ink)";
-                e.target.style.color = "var(--cream)";
-              }}
-            >
-              View my work
+          <div className="rise" style={{ "--d": 6, display: "flex", gap: 28, alignItems: "center", flexWrap: "wrap" }}>
+            <a href="#projects" className="btn">
+              View my work <span className="arrow">→</span>
             </a>
-            <a
-              href="https://github.com/fernandojosecc"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                color: "var(--ink)",
-                fontSize: "13px",
-                borderBottom: "1.5px solid var(--ink-light)",
-                paddingBottom: "2px",
-                transition: "border-color 0.15s ease-out",
-              }}
-              onMouseEnter={(e) =>
-                (e.target.style.borderColor = "var(--ink)")
-              }
-              onMouseLeave={(e) =>
-                (e.target.style.borderColor = "var(--ink-light)")
-              }
-            >
-              GitHub →
+            <a href="https://github.com/fernandojosecc" target="_blank" rel="noopener noreferrer" className="link-u" style={{ fontSize: 13 }}>
+              GitHub ↗
             </a>
           </div>
         </div>
 
-        {/* Stack pills */}
-        <div style={{ marginTop: "48px" }}>
-          <div
-            style={{
-              fontSize: "11px",
-              textTransform: "uppercase",
-              letterSpacing: "1px",
-              color: "var(--ink-light)",
-              marginBottom: "12px",
-            }}
-          >
-            Core stack
-          </div>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
-            {stackItems.map((item) => (
-              <span key={item} className="pill cursor-hover">
-                {item}
-              </span>
+        <div className="rise hero-stack" style={{ "--d": 7 }}>
+          <div className="eyebrow" style={{ marginBottom: 14 }}>Core stack</div>
+          <ul>
+            {stack.map((row) => (
+              <li key={row}>{row}</li>
             ))}
-            <span className="pill cursor-hover">Bilingual EN/ES</span>
-          </div>
+          </ul>
         </div>
       </div>
 
-      {/* Right column - Terminal */}
-      <div
-        style={{
-          backgroundColor: "var(--ink)",
-        }}
-      >
+      <div className="hero-right">
         <Terminal />
       </div>
     </section>

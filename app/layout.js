@@ -15,9 +15,21 @@ const dmMono = DM_Mono({
   display: "swap",
 });
 
+const description =
+  "Software development student building iPhone and iPad apps and AI tools. Bilingual EN/ES. Based in California.";
+
 export const metadata = {
-  title: "Fernando Contreras — AI Tools Specialist",
-  description: "Software development student building AI-powered apps. Bilingual EN/ES. Based in California.",
+  metadataBase: new URL("https://fernandocontreras.dev"),
+  title: "Fernando Contreras — Software Developer",
+  description,
+  openGraph: {
+    title: "Fernando Contreras — Software Developer",
+    description,
+    url: "/",
+    siteName: "Fernando Contreras",
+    type: "website",
+  },
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({ children }) {

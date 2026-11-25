@@ -1,6 +1,6 @@
 # Fernando Contreras - Portfolio Site
 
-Personal portfolio of Fernando Contreras, AI Tools Specialist based in California.
+Personal portfolio of Fernando Contreras, a software developer (and AI builder) based in California.
 
 ## Live Site
 
@@ -8,13 +8,16 @@ https://fernandocontreras.dev
 
 ## About
 
-This is my personal portfolio site showcasing my AI engineering projects. Built with Next.js and deployed on Vercel with a custom domain. Features a terminal-inspired hero section and highlights my three deployed AI applications.
+This is my personal portfolio site showcasing my apps and AI projects. Built with Next.js and deployed on Vercel with a custom domain. Features a terminal-inspired hero section and a filterable projects list with a hover preview.
 
 ## Projects Featured
 
+- **Pomopal** (React Native, Expo) — Pomodoro timer with a pixel-art pet, on the App Store
+- **Sketchshelf** (React Native, Expo, Skia) — sketchbook library, on the App Store
 - **Bilingual AI Chatbot** (Python, Flask, OpenAI)
 - **RAG Document Assistant** (LangChain, Claude, Pinecone)
 - **AI Research Agent** (LangChain, Claude, Tavily)
+- **BMO Cyberdeck** — a handmade, voice-controlled BMO on a Raspberry Pi 5
 
 ## Tech Stack
 

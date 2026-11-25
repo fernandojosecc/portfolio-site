@@ -1,85 +1,69 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
+const INTERACTIVE = "a, button, [role='button'], [role='tab'], input, textarea, .cursor-hover";
+
+// Smooth dot + ring cursor. One set of delegated listeners, positions updated in rAF.
 export default function CustomCursor() {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [isHovering, setIsHovering] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
-  const [isMobile, setIsMobile] = useState(true);
+  const dot = useRef(null);
+  const ring = useRef(null);
+  const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {
-    // Check mobile once on mount
-    const checkMobile = () => {
-      setIsMobile(window.matchMedia("(max-width: 768px)").matches);
+    const mq = window.matchMedia("(hover: hover) and (pointer: fine) and (min-width: 769px)");
+    const sync = () => setEnabled(mq.matches);
+    mq.addEventListener("change", sync);
+    sync();
+    return () => mq.removeEventListener("change", sync);
+  }, []);
+
+  useEffect(() => {
+    if (!enabled) return;
+    let x = -100, y = -100, rx = -100, ry = -100, raf;
+    let hovering = false;
+
+    const move = (e) => {
+      x = e.clientX;
+      y = e.clientY;
+      if (dot.current) dot.current.style.opacity = 1;
+      if (ring.current) ring.current.style.opacity = 1;
     };
-    checkMobile();
-
-    if (isMobile) return;
-
-    const updatePosition = (e) => {
-      setPosition({ x: e.clientX, y: e.clientY });
-      if (!isVisible) setIsVisible(true);
+    const over = (e) => {
+      hovering = !!e.target.closest?.(INTERACTIVE);
+      ring.current?.classList.toggle("is-hover", hovering);
+      dot.current?.classList.toggle("is-hover", hovering);
+    };
+    const leave = () => {
+      if (dot.current) dot.current.style.opacity = 0;
+      if (ring.current) ring.current.style.opacity = 0;
+    };
+    const tick = () => {
+      rx += (x - rx) * 0.16;
+      ry += (y - ry) * 0.16;
+      if (dot.current) dot.current.style.transform = `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%)`;
+      if (ring.current) ring.current.style.transform = `translate3d(${rx}px, ${ry}px, 0) translate(-50%, -50%)`;
+      raf = requestAnimationFrame(tick);
     };
 
-    const handleMouseEnter = () => setIsVisible(true);
-    const handleMouseLeave = () => setIsVisible(false);
-
-    // Add hover detection for interactive elements
-    const addHoverListeners = () => {
-      const interactiveElements = document.querySelectorAll(
-        "a, button, [role='button'], input, textarea, .cursor-hover"
-      );
-
-      interactiveElements.forEach((el) => {
-        el.addEventListener("mouseenter", () => setIsHovering(true));
-        el.addEventListener("mouseleave", () => setIsHovering(false));
-      });
-    };
-
-    window.addEventListener("mousemove", updatePosition);
-    document.addEventListener("mouseenter", handleMouseEnter);
-    document.addEventListener("mouseleave", handleMouseLeave);
-
-    // Initial setup and re-run when DOM changes
-    addHoverListeners();
-    const observer = new MutationObserver(addHoverListeners);
-    observer.observe(document.body, { childList: true, subtree: true });
-
+    window.addEventListener("mousemove", move, { passive: true });
+    document.addEventListener("mouseover", over, { passive: true });
+    document.documentElement.addEventListener("mouseleave", leave);
+    raf = requestAnimationFrame(tick);
     return () => {
-      window.removeEventListener("mousemove", updatePosition);
-      document.removeEventListener("mouseenter", handleMouseEnter);
-      document.removeEventListener("mouseleave", handleMouseLeave);
-      observer.disconnect();
+      window.removeEventListener("mousemove", move);
+      document.removeEventListener("mouseover", over);
+      document.documentElement.removeEventListener("mouseleave", leave);
+      cancelAnimationFrame(raf);
     };
-  }, [isVisible, isMobile]);
+  }, [enabled]);
 
-  // Don't render on mobile
-  if (isMobile) return null;
+  if (!enabled) return null;
 
   return (
-    <div
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        pointerEvents: "none",
-        zIndex: 9999,
-        mixBlendMode: "multiply",
-        transform: `translate3d(${position.x}px, ${position.y}px, 0) translate(-50%, -50%)`,
-        transition: "transform 0.1s ease-out, width 0.15s ease-out, height 0.15s ease-out",
-      }}
-    >
-      <div
-        style={{
-          width: isHovering ? "36px" : "10px",
-          height: isHovering ? "36px" : "10px",
-          backgroundColor: "var(--yellow)",
-          borderRadius: "50%",
-          opacity: isVisible ? 1 : 0,
-          transition: "width 0.15s ease-out, height 0.15s ease-out, opacity 0.15s ease-out",
-        }}
-      />
-    </div>
+    <>
+      <div ref={ring} className="cursor-ring" aria-hidden="true" />
+      <div ref={dot} className="cursor-dot" aria-hidden="true" />
+    </>
   );
 }

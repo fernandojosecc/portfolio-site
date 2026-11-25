@@ -41,10 +41,11 @@
   - [ ] Ink text (#1A1A16)
   - [ ] Yellow accent (#F5C842)
 - [ ] Glass card effect visible in contact section
-- [ ] Hover effects work on project cards (yellow underline)
+- [ ] Projects: filter chips work, hovering a row changes the preview picture, and small screens show a picture inside each row
+- [ ] /pomopal, /sketchshelf and /bmo-cyberdeck load, and the App Store buttons open the right apps
 
 ## SEO & Meta
-- [ ] Page title shows: "Fernando Contreras — AI Tools Specialist"
+- [ ] Page title shows: "Fernando Contreras — Software Developer"
 - [ ] Meta description appears in search results snippet
 - [ ] Favicon displays in browser tab
 
