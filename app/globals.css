@@ -31,6 +31,7 @@
   /* Fonts */
   --font-playfair: 'Playfair Display', Georgia, serif;
   --font-dm-mono: 'DM Mono', monospace;
+  --font-body: var(--font-sans), 'Inter', system-ui, sans-serif;
 }
 
 * {
@@ -56,8 +57,8 @@ body {
   flex-direction: column;
   color: var(--ink);
   background: var(--cream);
-  font-family: var(--font-dm-mono), monospace;
-  font-size: 14px;
+  font-family: var(--font-body);
+  font-size: 15px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -436,10 +437,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .proj-desc {
-  font-size: 13px;
-  line-height: 1.75;
+  font-size: 15px;
+  line-height: 1.7;
   color: var(--ink-mid);
-  max-width: 420px;
+  max-width: 440px;
 }
 
 .proj-links {
@@ -1108,8 +1109,8 @@ body::after {
 }
 
 .hero-bio {
-  font-size: 14px;
-  line-height: 1.85;
+  font-size: 16px;
+  line-height: 1.75;
   color: var(--ink-mid);
   max-width: 440px;
   margin-bottom: 40px;
@@ -1185,8 +1186,8 @@ body::after {
 }
 
 .contact-copy {
-  font-size: 14px;
-  line-height: 1.85;
+  font-size: 16px;
+  line-height: 1.75;
   color: var(--ink-mid);
   max-width: 420px;
   margin-bottom: 40px;
@@ -1263,7 +1264,7 @@ a:hover > .contact-arrow {
 }
 
 .contact-row-value {
-  font-size: 14px;
+  font-size: 15px;
   overflow-wrap: anywhere;
 }
 
@@ -1343,8 +1344,8 @@ a:hover > .contact-arrow {
 }
 
 .pg-lead {
-  font-size: 18px;
-  line-height: 1.75;
+  font-size: 19px;
+  line-height: 1.7;
   color: var(--ink-mid);
   max-width: 580px;
 }
@@ -1407,8 +1408,8 @@ a:hover > .contact-arrow {
 }
 
 .pg-card p {
-  font-size: 13px;
-  line-height: 1.8;
+  font-size: 15px;
+  line-height: 1.7;
   color: var(--ink-mid);
 }
 
@@ -1454,4 +1455,48 @@ a:hover > .contact-arrow {
   .pg-h2 {
     margin-top: 72px;
   }
+}
+
+/* Project titles are links: stretch the hit area over the whole row's title */
+.proj-title-link {
+  background: linear-gradient(var(--gold), var(--gold)) left 92% / 0% 1px no-repeat;
+  transition: background-size 0.6s var(--ease);
+}
+
+.proj-title-link:hover,
+.proj-title-link:focus-visible {
+  background-size: 100% 1px;
+}
+
+
+/* ---- Type roles: serif = headlines, sans = reading text, mono = labels, numbers and the terminal ---- */
+.eyebrow,
+.site-nav-link,
+.site-nav-status,
+.proj-filter,
+.proj-num,
+.proj-meta,
+.proj-status,
+.proj-caption,
+.proj-links,
+.pill,
+.btn,
+.link-u,
+.hero-stack,
+.contact-copy-btn,
+.contact-row .eyebrow,
+.site-footer,
+.pg-back,
+.pg-credit,
+.status-dot + span {
+  font-family: var(--font-dm-mono), monospace;
+}
+
+.contact-row-value,
+.contact-arrow {
+  font-family: var(--font-dm-mono), monospace;
+}
+
+.status-card > div:nth-child(2) span:last-child {
+  font-family: var(--font-body);
 }

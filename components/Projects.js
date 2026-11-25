@@ -256,6 +256,12 @@ const rowLinks = (project) =>
     project.github && { label: "GitHub →", href: project.github, external: true },
   ].filter(Boolean);
 
+// Where the title goes: the details page if there is one, otherwise the first link.
+const titleLink = (project) => {
+  const links = rowLinks(project);
+  return links.find((l) => l.label.startsWith("Details")) ?? links[0];
+};
+
 export default function Projects() {
   const [filter, setFilter] = useState("all");
   const [activeId, setActiveId] = useState(null);
@@ -318,7 +324,19 @@ export default function Projects() {
               <div className="proj-row cursor-hover" tabIndex={0}>
                 <span className="proj-num">{String(i + 1).padStart(2, "0")}</span>
                 <div style={{ minWidth: 0 }}>
-                  <h3 className="proj-title">{project.title}</h3>
+                  <h3 className="proj-title">
+                    {titleLink(project) ? (
+                      <Link
+                        href={titleLink(project).href}
+                        className="proj-title-link"
+                        {...(titleLink(project).external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                      >
+                        {project.title}
+                      </Link>
+                    ) : (
+                      project.title
+                    )}
+                  </h3>
                   <p className="proj-desc">{project.description}</p>
                   {(project.thumb ?? project.slides?.[0]?.src) && (
                     <div className="proj-thumb">
