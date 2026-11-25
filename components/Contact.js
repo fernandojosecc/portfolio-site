@@ -16,10 +16,10 @@ const contactLinks = [
     href: "https://github.com/fernandojosecc",
   },
   {
-    icon: "🌐",
-    label: "Website",
-    value: "fernandocontreras.dev",
-    href: "https://fernandocontreras.dev",
+    icon: "in",
+    label: "LinkedIn",
+    value: "linkedin.com/in/fernandojosecontreras",
+    href: "https://www.linkedin.com/in/fernandojosecontreras/",
   },
 ];
 
@@ -94,8 +94,8 @@ export default function Contact() {
               marginBottom: "48px",
             }}
           >
-            I&apos;m actively looking for AI engineering roles, internships,
-            and collaborative projects in AI and software development. If
+            I&apos;m actively looking for software engineering and AI roles,
+            internships, and collaborative projects. If
             you&apos;re building something interesting, let&apos;s talk.
           </p>
 
@@ -244,7 +244,7 @@ export default function Contact() {
                     lineHeight: 1,
                   }}
                 >
-                  1
+                  2
                 </div>
                 <div
                   style={{
@@ -253,7 +253,7 @@ export default function Contact() {
                     marginTop: "4px",
                   }}
                 >
-                  App in production
+                  Apps on the App Store
                 </div>
               </div>
               <div>
@@ -297,7 +297,7 @@ export default function Contact() {
                     marginTop: "4px",
                   }}
                 >
-                  Projects planned
+                  AI projects live
                 </div>
               </div>
             </div>

@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 // All projects: AI apps, hardware builds, games — finished or in progress.
+// Projects with `hidden: true` are kept here but not shown on the site.
 // Preview panel: `slides` is a list of pictures that crossfade while the project is shown.
 // A slide is { src } (fills the panel) or { phones: [src, src, src] } (portrait screenshots side by side).
 // `year` is optional; leave it null to hide it.
@@ -31,7 +32,7 @@ const allProjects = [
     id: "sketchshelf",
     title: "Sketchshelf",
     category: "apps",
-    status: "soon",
+    status: "live",
     year: "2026",
     description:
       "A sketchbook library for iPhone and iPad. Open a book, turn its pages, draw and collage, then put it back on the shelf. Everything stays on your device.",
@@ -41,12 +42,12 @@ const allProjects = [
       { phones: ["/sketchshelf/phone-01-library.jpg", "/sketchshelf/phone-04-open-book.jpg", "/sketchshelf/phone-05-canvas.jpg"] },
     ],
     links: [
+      { label: "App Store ↗", href: "https://apps.apple.com/us/app/sketchshelf/id6838025633", external: true },
       { label: "Details →", href: "/sketchshelf" },
     ],
   },
   {
     id: "bilingual-chatbot",
-    hidden: true, // remove this line to show the project again
     title: "Bilingual AI Chatbot",
     category: "ai",
     status: "live",
@@ -59,7 +60,6 @@ const allProjects = [
   },
   {
     id: "rag-assistant",
-    hidden: true, // remove this line to show the project again
     title: "RAG Document Assistant",
     category: "ai",
     status: "live",
@@ -72,7 +72,6 @@ const allProjects = [
   },
   {
     id: "research-agent",
-    hidden: true, // remove this line to show the project again
     title: "AI Research Agent",
     category: "ai",
     status: "live",
@@ -93,6 +92,7 @@ const allProjects = [
       "A handmade cyberdeck built inside a BMO-inspired case — a portable computer with a personality.",
     stack: [],
     slides: [{ src: "/projects/bmo-cyberdeck.gif" }],
+    thumb: "/projects/bmo-cyberdeck-poster.jpg", // light still used on small screens
     links: [{ label: "Details →", href: "/bmo-cyberdeck" }],
   },
 ];
@@ -322,6 +322,17 @@ export default function Projects() {
                 <div style={{ minWidth: 0 }}>
                   <h3 className="proj-title">{project.title}</h3>
                   <p className="proj-desc">{project.description}</p>
+                  {(project.thumb ?? project.slides?.[0]?.src) && (
+                    <div className="proj-thumb">
+                      <Image
+                        src={project.thumb ?? project.slides[0].src}
+                        alt={project.title}
+                        fill
+                        sizes="100vw"
+                        style={{ objectFit: "cover" }}
+                      />
+                    </div>
+                  )}
                   {rowLinks(project).length > 0 && (
                     <div className="proj-links">
                       {rowLinks(project).map((l) => (

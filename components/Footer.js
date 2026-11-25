@@ -25,7 +25,7 @@ export default function Footer() {
 
       {/* Center */}
       <div style={{ color: "var(--ink-light)", fontSize: "12px" }}>
-        fernandocontreras.dev · 2025
+        fernandocontreras.dev · {new Date().getFullYear()}
       </div>
 
       {/* Right */}

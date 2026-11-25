@@ -3,6 +3,8 @@ import Link from "next/link";
 
 export const metadata = {
   title: "Pomopal — Fernando Contreras",
+  other: { "apple-itunes-app": "app-id=6830915125" },
+  openGraph: { title: "Pomopal", url: "/pomopal", description: "A free iPhone and iPad focus timer: finish a Pomodoro session and raise a pixel-art pet." },
   description: "Pomopal is a free iPhone and iPad focus timer: finish a Pomodoro session and raise a pixel-art pet. Built with React Native and Expo.",
 };
 

@@ -3,11 +3,13 @@ import Link from "next/link";
 
 export const metadata = {
   title: "Sketchshelf — Fernando Contreras",
+  other: { "apple-itunes-app": "app-id=6838025633" },
+  openGraph: { title: "Sketchshelf", url: "/sketchshelf", description: "A free iPhone and iPad sketchbook library: open a sketchbook, draw in it and keep it." },
   description: "Sketchshelf is a free iPhone and iPad app: a library of sketchbooks you can open, draw in and keep. Built with React Native, Expo and Skia.",
 };
 
-// Put the App Store link here once the app is published. Until then the page shows "Coming soon".
-const APP_STORE_URL = "";
+// If this is empty, the page shows "Coming soon" instead of the download button.
+const APP_STORE_URL = "https://apps.apple.com/us/app/sketchshelf/id6838025633";
 
 const phones = [
   ["phone-01-library.jpg", "The library: sketchbooks in a row"],
@@ -51,7 +53,7 @@ export default function Sketchshelf() {
 
       <div style={{ display: "flex", flexWrap: "wrap", gap: 12, margin: "24px 0 8px" }}>
         {APP_STORE_URL ? (
-          <a className="ss-btn" href={APP_STORE_URL} style={{ background: "var(--ink)", color: "var(--cream)" }}>Download on the App Store</a>
+          <a className="ss-btn" href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" style={{ background: "var(--ink)", color: "var(--cream)" }}>Download on the App Store</a>
         ) : (
           <span className="ss-btn" style={{ background: "var(--yellow-pale)", border: "1px solid var(--yellow-dark)" }}>Coming soon to the App Store</span>
         )}

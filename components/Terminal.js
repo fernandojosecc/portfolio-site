@@ -4,18 +4,19 @@ import { useEffect, useState } from "react";
 
 const terminalLines = [
   { type: "command", content: "whoami" },
-  { type: "output", content: "ai_engineer / builder / bilingual" },
+  { type: "output", content: "software_dev / ai_builder / bilingual" },
   { type: "empty", content: "" },
   { type: "command", content: "cat about.json" },
   { type: "json", content: '{' },
   { type: "json", content: '  "name": "Fernando Contreras",', isKeyValue: true, key: '"name"', value: '"Fernando Contreras"' },
-  { type: "json", content: '  "focus": "AI Engineering",', isKeyValue: true, key: '"focus"', value: '"AI Engineering"' },
+  { type: "json", content: '  "focus": "Software + AI",', isKeyValue: true, key: '"focus"', value: '"Software + AI"' },
   { type: "json", content: '  "languages": ["English", "Spanish"],', isKeyValue: true, key: '"languages"', value: '["English", "Spanish"]' },
   { type: "json", content: '  "status": "open to work",', isKeyValue: true, key: '"status"', value: '"open to work"' },
   { type: "json", content: '  "location": "California, USA"', isKeyValue: true, key: '"location"', value: '"California, USA"' },
   { type: "json", content: '}' },
   { type: "empty", content: "" },
   { type: "command", content: "ls projects/" },
+  { type: "output", content: "pomopal/   sketchshelf/   bmo-cyberdeck/", isFolders: true },
   { type: "output", content: "bilingual-chatbot/   rag-assistant/   research-agent/", isFolders: true },
   { type: "empty", content: "" },
   { type: "comment", content: "# Ready for new challenges..." },
@@ -25,13 +26,9 @@ export default function Terminal() {
   const [visibleLines, setVisibleLines] = useState([]);
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
   const [currentCharIndex, setCurrentCharIndex] = useState(0);
-  const [isTyping, setIsTyping] = useState(true);
 
   useEffect(() => {
-    if (currentLineIndex >= terminalLines.length) {
-      setIsTyping(false);
-      return;
-    }
+    if (currentLineIndex >= terminalLines.length) return;
 
     const currentLine = terminalLines[currentLineIndex];
     const typingSpeed = currentLine.type === "command" ? 40 : 20;
@@ -50,6 +47,8 @@ export default function Terminal() {
       return () => clearTimeout(timeout);
     }
   }, [currentLineIndex, currentCharIndex]);
+
+  const isTyping = currentLineIndex < terminalLines.length;
 
   const renderLine = (line, index, isCurrent = false) => {
     const prompt = (

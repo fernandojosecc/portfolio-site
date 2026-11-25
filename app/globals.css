@@ -541,3 +541,19 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 28px;
   }
 }
+
+/* Small-screen picture for each project row (the hover preview panel is desktop-only) */
+.proj-thumb {
+  display: none;
+  position: relative;
+  aspect-ratio: 4 / 3;
+  margin-top: 14px;
+  border: 1.5px solid var(--ink);
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .proj-thumb {
+    display: block;
+  }
+}

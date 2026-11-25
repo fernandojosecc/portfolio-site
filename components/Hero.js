@@ -1,15 +1,19 @@
 "use client";
 
+import Image from "next/image";
 import Terminal from "./Terminal";
 
 const stackItems = [
+  "React Native",
+  "Expo",
+  "TypeScript",
   "Python",
   "OpenAI API",
-  "Flask",
   "LangChain",
   "FastAPI",
-  "AWS",
+  "Flask",
   "Pinecone",
+  "AWS",
   "Agents",
   "Prompt Engineering",
 ];
@@ -38,6 +42,23 @@ export default function Hero() {
         className="responsive-padding"
       >
         <div>
+          {/* Photo */}
+          <Image
+            src="/fernando.jpg"
+            alt="Fernando Contreras"
+            width={72}
+            height={72}
+            priority
+            style={{
+              width: "72px",
+              height: "72px",
+              borderRadius: "50%",
+              objectFit: "cover",
+              border: "1.5px solid var(--ink)",
+              marginBottom: "24px",
+            }}
+          />
+
           {/* Eyebrow */}
           <div
             style={{
@@ -62,7 +83,7 @@ export default function Hero() {
                 color: "var(--ink-mid)",
               }}
             >
-              AI Tools Specialist · Bilingual EN/ES
+              Software Developer · AI Tools · Bilingual EN/ES
             </span>
           </div>
 
@@ -106,10 +127,11 @@ export default function Hero() {
               marginBottom: "32px",
             }}
           >
-            I'm a software development student with a focus on AI engineering. I
-            build real tools — chatbots, RAG pipelines, and autonomous agents —
-            with a bias toward shipping things that actually work. Bilingual
-            EN/ES, based in California.
+            I&apos;m a software development student who ships real things: iPhone
+            and iPad apps on the App Store, plus AI tools like chatbots, RAG
+            pipelines, and autonomous agents. From a pixel-pet focus timer to a
+            talking BMO, I build with a bias toward what actually works.
+            Bilingual EN/ES, based in California.
           </p>
 
           {/* CTAs */}

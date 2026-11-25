@@ -3,6 +3,7 @@ import Link from "next/link";
 
 export const metadata = {
   title: "BMO Cyberdeck — Fernando Contreras",
+  openGraph: { title: "BMO Cyberdeck", url: "/bmo-cyberdeck", description: "A handmade BMO from Adventure Time that talks, sees, and launches retro games by voice." },
   description: "A handmade BMO from Adventure Time: a 3D-printed case around a Raspberry Pi 5 that talks, sees, plays music and videos, and launches retro games by voice.",
 };
 
