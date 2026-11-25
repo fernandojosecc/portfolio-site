@@ -1,9 +1,15 @@
-import { Playfair_Display, DM_Mono } from "next/font/google";
+import { Playfair_Display, DM_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const inter = Inter({
+  variable: "--font-sans",
   subsets: ["latin"],
   display: "swap",
 });
@@ -34,7 +40,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${playfair.variable} ${dmMono.variable}`}>
+    <html lang="en" className={`${playfair.variable} ${dmMono.variable} ${inter.variable}`}>
       <body>
         {children}
         <GoogleAnalytics />
