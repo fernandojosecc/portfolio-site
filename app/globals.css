@@ -1455,3 +1455,14 @@ a:hover > .contact-arrow {
     margin-top: 72px;
   }
 }
+
+/* Project titles are links: stretch the hit area over the whole row's title */
+.proj-title-link {
+  background: linear-gradient(var(--gold), var(--gold)) left 92% / 0% 1px no-repeat;
+  transition: background-size 0.6s var(--ease);
+}
+
+.proj-title-link:hover,
+.proj-title-link:focus-visible {
+  background-size: 100% 1px;
+}
