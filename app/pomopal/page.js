@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import PageShell from "@/components/PageShell";
 
 export const metadata = {
   title: "Pomopal — Fernando Contreras",
@@ -35,54 +36,50 @@ const built = [
   ["RevenueCat and AdMob", "Paid pets through in-app purchase, and optional rewarded ads in the free version."],
 ];
 
-const wrap = { flex: 1, maxWidth: 880, width: "100%", margin: "0 auto", padding: "56px 20px 80px" };
-const h2 = { fontFamily: "var(--font-playfair)", fontSize: 26, margin: "56px 0 16px" };
-const label = { fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--ink-light)" };
 
 export default function Pomopal() {
   return (
-    <main style={wrap}>
-      <style>{`body{cursor:auto}.pp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}.pp-phones{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px}.pp-card{background:var(--cream-dark);border-radius:6px;padding:18px}.pp-card h3{font-family:var(--font-playfair);font-size:18px;margin-bottom:6px}.pp-card p{color:var(--ink-mid);line-height:1.7}.pp-btn{display:inline-block;padding:12px 20px;border-radius:6px;font-size:13px}.pp-btn:hover{opacity:.85}`}</style>
-      <Link href="/" style={{ color: "var(--ink-mid)", fontSize: 13 }}>&larr; fernandocontreras.dev</Link>
+    <PageShell>
+      <Link href="/" className="pg-back link-u">&larr; fernandocontreras.dev</Link>
 
-      <p style={{ ...label, marginTop: 32 }}>iPhone and iPad app</p>
-      <h1 style={{ fontFamily: "var(--font-playfair)", fontSize: 48, lineHeight: 1.1, margin: "8px 0 14px" }}>Pomopal</h1>
-      <p style={{ fontSize: 17, lineHeight: 1.7, color: "var(--ink-mid)", maxWidth: 560 }}>
+      <p className="eyebrow rise" style={{ marginTop: 40, "--d": 0 }}>iPhone and iPad app</p>
+      <h1 className="pg-title rise" style={{ "--d": 1 }}>Pomopal</h1>
+      <p className="pg-lead rise" style={{ "--d": 2 }}>
         A Pomodoro timer with a pet. Focus for a session and raise a pixel-art chick into a chicken, then fill a farm with every pet you grow.
       </p>
 
-      <div style={{ display: "flex", flexWrap: "wrap", gap: 12, margin: "24px 0 8px" }}>
-        <a className="pp-btn" href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" style={{ background: "var(--ink)", color: "var(--cream)" }}>Download on the App Store</a>
-        <Link className="pp-btn" href="/pomopal/support" style={{ border: "1px solid var(--ink-light)" }}>Support</Link>
+      <div className="pg-actions rise" style={{ "--d": 3 }}>
+        <a className="btn" href={APP_STORE_URL} target="_blank" rel="noopener noreferrer">Download on the App Store <span className="arrow">↗</span></a>
+        <Link className="btn btn-ghost" href="/pomopal/support">Support</Link>
       </div>
 
-      <div className="pp-phones" style={{ marginTop: 40 }}>
+      <div className="pg-phones rise" style={{ "--d": 4 }}>
         {phones.map(([file, alt]) => (
-          <Image key={file} src={`/pomopal/${file}`} alt={alt} width={640} height={1391} sizes="(max-width: 600px) 45vw, 200px" style={{ width: "100%", height: "auto", borderRadius: 10, border: "1px solid var(--cream-dark)" }} />
+          <Image key={file} src={`/pomopal/${file}`} alt={alt} width={640} height={1391} sizes="(max-width: 600px) 45vw, 200px" className="pg-shot" style={{ width: "100%", height: "auto" }} />
         ))}
       </div>
 
-      <h2 style={h2}>What it is</h2>
-      <div className="pp-grid">
-        {features.map(([title, text]) => (
-          <div className="pp-card" key={title}><h3>{title}</h3><p>{text}</p></div>
+      <h2 className="pg-h2 reveal">What it is</h2>
+      <div className="pg-grid">
+        {features.map(([title, text], i) => (
+          <div className="pg-card lux-card reveal" key={title} style={{ transitionDelay: `${(i % 3) * 90}ms` }}><h3>{title}</h3><p>{text}</p></div>
         ))}
       </div>
 
-      <Image src="/pomopal/ipad-farm.jpg" alt="The farm on iPad" width={1500} height={1125} sizes="(max-width: 900px) 100vw, 880px" style={{ width: "100%", height: "auto", borderRadius: 10, marginTop: 32, border: "1px solid var(--cream-dark)" }} />
+      <Image src="/pomopal/ipad-farm.jpg" alt="The farm on iPad" width={1500} height={1125} sizes="(max-width: 900px) 100vw, 880px" className="pg-shot pg-wide reveal" style={{ width: "100%", height: "auto" }} />
 
-      <h2 style={h2}>How it&apos;s built</h2>
-      <div className="pp-grid">
-        {built.map(([title, text]) => (
-          <div className="pp-card" key={title}><h3>{title}</h3><p>{text}</p></div>
+      <h2 className="pg-h2 reveal">How it&apos;s built</h2>
+      <div className="pg-grid">
+        {built.map(([title, text], i) => (
+          <div className="pg-card lux-card reveal" key={title} style={{ transitionDelay: `${(i % 3) * 90}ms` }}><h3>{title}</h3><p>{text}</p></div>
         ))}
       </div>
 
-      <p style={{ marginTop: 56, color: "var(--ink-mid)" }}>
+      <p className="pg-credit reveal">
         Designed and built by Fernando Contreras. Pixel art by Cup Nooble (Sprout Lands).
-        {" "}<Link href="/pomopal/privacy" style={{ textDecoration: "underline" }}>Privacy policy</Link>
-        {" · "}<Link href="/pomopal/support" style={{ textDecoration: "underline" }}>Support</Link>
+        {" "}<Link href="/pomopal/privacy" className="link-u">Privacy policy</Link>
+        {" · "}<Link href="/pomopal/support" className="link-u">Support</Link>
       </p>
-    </main>
+    </PageShell>
   );
 }

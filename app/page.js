@@ -41,7 +41,7 @@ export default function Home() {
   return (
     <>
       <CustomCursor />
-      <Navbar />
+      <Navbar home />
       <main style={{ flex: 1 }}>
         <Hero />
         <Projects />

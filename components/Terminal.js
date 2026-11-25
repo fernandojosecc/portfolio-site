@@ -110,8 +110,8 @@ export default function Terminal() {
   return (
     <div
       style={{
-        backgroundColor: "var(--ink)",
-        padding: "24px",
+        backgroundColor: "transparent",
+        padding: "32px",
         height: "100%",
         display: "flex",
         flexDirection: "column",
@@ -132,33 +132,34 @@ export default function Terminal() {
         <div style={{ display: "flex", gap: "8px" }}>
           <span
             style={{
-              width: "12px",
-              height: "12px",
+              width: "10px",
+              height: "10px",
               borderRadius: "50%",
-              backgroundColor: "var(--terminal-red)",
+              backgroundColor: "var(--terminal-red)", opacity: 0.75,
             }}
           />
           <span
             style={{
-              width: "12px",
-              height: "12px",
+              width: "10px",
+              height: "10px",
               borderRadius: "50%",
-              backgroundColor: "var(--terminal-yellow)",
+              backgroundColor: "var(--terminal-yellow)", opacity: 0.75,
             }}
           />
           <span
             style={{
-              width: "12px",
-              height: "12px",
+              width: "10px",
+              height: "10px",
               borderRadius: "50%",
-              backgroundColor: "var(--terminal-green)",
+              backgroundColor: "var(--terminal-green)", opacity: 0.75,
             }}
           />
         </div>
         <span
           style={{
-            fontSize: "12px",
-            color: "rgba(255,255,255,0.3)",
+            fontSize: "11px",
+            letterSpacing: "0.12em",
+            color: "rgba(255,255,255,0.35)",
             fontFamily: "var(--font-dm-mono)",
           }}
         >

@@ -126,7 +126,7 @@ const statusLabel = {
   shipped: "Shipped",
 };
 
-const SLIDE_MS = 2200;
+const SLIDE_MS = 3200;
 
 function SlideContent({ slide, title, priority }) {
   if (slide.phones) {
@@ -140,7 +140,7 @@ function SlideContent({ slide, title, priority }) {
             width={640}
             height={1391}
             sizes="160px"
-            style={{ height: "100%", width: "auto", borderRadius: "8px", border: "1px solid var(--ink-light)" }}
+            style={{ height: "100%", width: "auto", borderRadius: "8px", border: "1px solid var(--hair-strong)", boxShadow: "var(--shadow-soft)" }}
           />
         ))}
       </div>
@@ -173,23 +173,30 @@ function Preview({ project }) {
 
   if (slides.length > 0) {
     return (
-      <div className="proj-preview" style={{ position: "relative" }}>
-        {slides.map((slide, i) => (
-          <div
-            key={slide.src ?? slide.phones[0]}
-            style={{ position: "absolute", inset: 0, opacity: i === index ? 1 : 0, transition: "opacity 0.6s ease" }}
-          >
-            <SlideContent slide={slide} title={project.title} priority={i === 0} />
-          </div>
-        ))}
-        {slides.length > 1 && (
-          <div style={{ position: "absolute", bottom: 10, left: 0, right: 0, display: "flex", justifyContent: "center", gap: 6 }}>
-            {slides.map((_, i) => (
-              <span key={i} style={{ width: 6, height: 6, borderRadius: "50%", background: i === index ? "var(--ink)" : "var(--ink-light)", opacity: i === index ? 1 : 0.5 }} />
-            ))}
-          </div>
-        )}
-      </div>
+      <>
+        <div className="proj-preview" style={{ position: "relative", "--slide-ms": `${SLIDE_MS}ms` }}>
+          {slides.map((slide, i) => (
+            <div
+              key={slide.src ?? slide.phones[0]}
+              className={i === index ? "proj-slide-img" : undefined}
+              style={{ position: "absolute", inset: 0, opacity: i === index ? 1 : 0, transition: "opacity 0.9s var(--ease)" }}
+            >
+              <SlideContent slide={slide} title={project.title} priority={i === 0} />
+            </div>
+          ))}
+          {slides.length > 1 && (
+            <div className="proj-bars">
+              {slides.map((_, i) => (
+                <span key={i} className={i === index ? "on" : undefined} />
+              ))}
+            </div>
+          )}
+        </div>
+        <div className="proj-caption">
+          <span>{project.title}</span>
+          <span>{categoryLabel[project.category]}</span>
+        </div>
+      </>
     );
   }
 
@@ -261,8 +268,8 @@ export default function Projects() {
     <section
       id="projects"
       style={{
-        padding: "64px 48px",
-        borderBottom: "1.5px solid var(--ink)",
+        padding: "88px 48px 96px",
+        borderBottom: "1px solid var(--hair)",
       }}
       className="responsive-padding"
     >
@@ -274,20 +281,11 @@ export default function Projects() {
           alignItems: "center",
           flexWrap: "wrap",
           gap: "16px",
-          paddingBottom: "16px",
-          borderBottom: "1.5px solid var(--ink)",
+          paddingBottom: "20px",
+          borderBottom: "1px solid var(--hair-strong)",
         }}
       >
-        <span
-          style={{
-            fontSize: "12px",
-            textTransform: "uppercase",
-            letterSpacing: "1px",
-            color: "var(--ink-light)",
-          }}
-        >
-          01 — Projects
-        </span>
+        <span className="eyebrow">01 — Selected work</span>
 
         <div style={{ display: "flex", gap: "4px", flexWrap: "wrap" }} role="tablist" aria-label="Filter projects">
           {filters.map((f) => {

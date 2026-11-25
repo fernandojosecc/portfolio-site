@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import PageShell from "@/components/PageShell";
 
 export const metadata = {
   title: "BMO Cyberdeck — Fernando Contreras",
@@ -37,19 +38,15 @@ const built = [
   ["Linux, by hand", "Setting up the audio devices so the mic and speaker survive a reboot took real debugging."],
 ];
 
-const wrap = { flex: 1, maxWidth: 880, width: "100%", margin: "0 auto", padding: "56px 20px 80px" };
-const h2 = { fontFamily: "var(--font-playfair)", fontSize: 26, margin: "56px 0 16px" };
-const label = { fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--ink-light)" };
 
 export default function BmoCyberdeck() {
   return (
-    <main style={wrap}>
-      <style>{`body{cursor:auto}.bm-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}.bm-card{background:var(--cream-dark);border-radius:6px;padding:18px}.bm-card h3{font-family:var(--font-playfair);font-size:18px;margin-bottom:6px}.bm-card p{color:var(--ink-mid);line-height:1.7}.bm-btn{display:inline-block;padding:12px 20px;border-radius:6px;font-size:13px}.bm-btn:hover{opacity:.85}`}</style>
-      <Link href="/" style={{ color: "var(--ink-mid)", fontSize: 13 }}>&larr; fernandocontreras.dev</Link>
+    <PageShell>
+      <Link href="/" className="pg-back link-u">&larr; fernandocontreras.dev</Link>
 
-      <p style={{ ...label, marginTop: 32 }}>Hardware project</p>
-      <h1 style={{ fontFamily: "var(--font-playfair)", fontSize: 48, lineHeight: 1.1, margin: "8px 0 14px" }}>BMO Cyberdeck</h1>
-      <p style={{ fontSize: 17, lineHeight: 1.7, color: "var(--ink-mid)", maxWidth: 600 }}>
+      <p className="eyebrow rise" style={{ marginTop: 40, "--d": 0 }}>Hardware project</p>
+      <h1 className="pg-title rise" style={{ "--d": 1 }}>BMO Cyberdeck</h1>
+      <p className="pg-lead rise" style={{ "--d": 2 }}>
         A handmade BMO from Adventure Time: a portable computer with a personality. It listens, talks, sees, plays music and videos, and launches retro games by voice.
       </p>
 
@@ -60,38 +57,38 @@ export default function BmoCyberdeck() {
         height={240}
         unoptimized
         priority
-        style={{ width: "100%", maxWidth: 480, height: "auto", borderRadius: 10, marginTop: 32, border: "1px solid var(--cream-dark)" }}
+        className="pg-shot pg-wide rise" style={{ width: "100%", maxWidth: 480, height: "auto", "--d": 3 }}
       />
 
-      <div style={{ display: "flex", flexWrap: "wrap", gap: 12, margin: "28px 0 0" }}>
-        <a className="bm-btn" href={ORIGINAL_CODE_URL} target="_blank" rel="noopener noreferrer" style={{ background: "var(--ink)", color: "var(--cream)" }}>Original project on GitHub ↗</a>
-        <a className="bm-btn" href={ORIGINAL_MODEL_URL} target="_blank" rel="noopener noreferrer" style={{ border: "1px solid var(--ink-light)" }}>3D model on Printables ↗</a>
+      <div className="pg-actions rise" style={{ "--d": 3 }}>
+        <a className="btn" href={ORIGINAL_CODE_URL} target="_blank" rel="noopener noreferrer">Original project on GitHub ↗</a>
+        <a className="btn btn-ghost" href={ORIGINAL_MODEL_URL} target="_blank" rel="noopener noreferrer">3D model on Printables ↗</a>
       </div>
 
-      <h2 style={h2}>What it does</h2>
-      <div className="bm-grid">
-        {features.map(([title, text]) => (
-          <div className="bm-card" key={title}><h3>{title}</h3><p>{text}</p></div>
+      <h2 className="pg-h2 reveal">What it does</h2>
+      <div className="pg-grid">
+        {features.map(([title, text], i) => (
+          <div className="pg-card lux-card reveal" key={title} style={{ transitionDelay: `${(i % 3) * 90}ms` }}><h3>{title}</h3><p>{text}</p></div>
         ))}
       </div>
 
-      <h2 style={h2}>What it’s made of</h2>
-      <div className="bm-grid">
-        {parts.map(([title, text]) => (
-          <div className="bm-card" key={title}><h3>{title}</h3><p>{text}</p></div>
+      <h2 className="pg-h2 reveal">What it’s made of</h2>
+      <div className="pg-grid">
+        {parts.map(([title, text], i) => (
+          <div className="pg-card lux-card reveal" key={title} style={{ transitionDelay: `${(i % 3) * 90}ms` }}><h3>{title}</h3><p>{text}</p></div>
         ))}
       </div>
 
-      <h2 style={h2}>The software</h2>
-      <div className="bm-grid">
-        {built.map(([title, text]) => (
-          <div className="bm-card" key={title}><h3>{title}</h3><p>{text}</p></div>
+      <h2 className="pg-h2 reveal">The software</h2>
+      <div className="pg-grid">
+        {built.map(([title, text], i) => (
+          <div className="pg-card lux-card reveal" key={title} style={{ transitionDelay: `${(i % 3) * 90}ms` }}><h3>{title}</h3><p>{text}</p></div>
         ))}
       </div>
 
-      <p style={{ marginTop: 56, color: "var(--ink-mid)", lineHeight: 1.7 }}>
+      <p className="pg-credit reveal">
         Built by Fernando Contreras, following the open-source BMO project and 3D model by brenpoly. I added the voice-launched games, music and videos, and the audio fixes.
       </p>
-    </main>
+    </PageShell>
   );
 }
