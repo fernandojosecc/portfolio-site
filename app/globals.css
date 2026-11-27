@@ -443,6 +443,23 @@ h1, h2, h3, h4, h5, h6 {
   max-width: 440px;
 }
 
+.proj-stack {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 14px;
+  max-width: 440px;
+}
+
+.proj-stack li {
+  padding: 2px 8px;
+  border: 1px solid var(--hair);
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  color: var(--ink-mid);
+}
+
 .proj-links {
   display: flex;
   gap: 20px;
@@ -505,7 +522,7 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 0 0 3px rgba(184, 144, 43, 0.2);
 }
 
-.proj-status-shipped::before {
+.proj-status-built::before {
   background: var(--ink);
 }
 
@@ -1479,6 +1496,7 @@ a:hover > .contact-arrow {
 .proj-status,
 .proj-caption,
 .proj-links,
+.proj-stack,
 .pill,
 .btn,
 .link-u,
