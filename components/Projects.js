@@ -51,7 +51,7 @@ const allProjects = [
     title: "Bilingual AI Chatbot",
     category: "ai",
     status: "live",
-    year: null,
+    year: "2025",
     description:
       "Conversational AI that responds in both English and Spanish. Built with Python, Flask, and the OpenAI API.",
     stack: ["Python", "Flask", "OpenAI", "Railway"],
@@ -63,7 +63,7 @@ const allProjects = [
     title: "RAG Document Assistant",
     category: "ai",
     status: "live",
-    year: null,
+    year: "2025",
     description:
       "Upload any PDF and ask questions about it in English and Spanish. Powered by LangChain, Claude API, and Pinecone vector search.",
     stack: ["Python", "FastAPI", "LangChain", "Claude API", "Pinecone", "Next.js"],
@@ -75,7 +75,7 @@ const allProjects = [
     title: "AI Research Agent",
     category: "ai",
     status: "live",
-    year: null,
+    year: "2025",
     description:
       "Autonomous agent that researches any topic and writes structured reports with sources, using LangChain tool use, Tavily web search, and Claude.",
     stack: ["Python", "FastAPI", "LangChain", "Claude API", "Tavily", "Next.js"],
@@ -86,11 +86,11 @@ const allProjects = [
     id: "bmo-cyberdeck",
     title: "BMO Cyberdeck",
     category: "hardware",
-    status: "shipped",
+    status: "built",
     year: "2026",
     description:
       "A handmade cyberdeck built inside a BMO-inspired case — a portable computer with a personality.",
-    stack: [],
+    stack: ["Raspberry Pi 5", "Ollama", "whisper.cpp", "Piper", "RetroArch"],
     slides: [{ src: "/projects/bmo-cyberdeck.gif" }],
     thumb: "/projects/bmo-cyberdeck-poster.jpg", // light still used on small screens
     links: [{ label: "Details →", href: "/bmo-cyberdeck" }],
@@ -123,7 +123,7 @@ const statusLabel = {
   live: "Live",
   soon: "Coming soon",
   building: "In progress",
-  shipped: "Shipped",
+  built: "Built",
 };
 
 const SLIDE_MS = 3200;
@@ -338,6 +338,13 @@ export default function Projects() {
                     )}
                   </h3>
                   <p className="proj-desc">{project.description}</p>
+                  {project.stack.length > 0 && (
+                    <ul className="proj-stack" aria-label="Tech stack">
+                      {project.stack.map((tag) => (
+                        <li key={tag}>{tag}</li>
+                      ))}
+                    </ul>
+                  )}
                   {(project.thumb ?? project.slides?.[0]?.src) && (
                     <div className="proj-thumb">
                       <Image
